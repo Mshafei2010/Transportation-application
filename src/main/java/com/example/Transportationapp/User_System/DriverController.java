@@ -81,7 +81,7 @@ public class DriverController {
     }
     
     //done
-    @RequestMapping(path="addoffer",method = RequestMethod.PUT)
+    @RequestMapping(path="addoffer",method = RequestMethod.POST)
     public void addOffer(@RequestBody  Ride ride,
                          int price) {
         Offer offer;

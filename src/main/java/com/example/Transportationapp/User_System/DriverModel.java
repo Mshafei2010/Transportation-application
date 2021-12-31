@@ -27,7 +27,6 @@ public class DriverModel {
         try {
             Connection con=DriverManager.getConnection("jdbc:sqlite:transportationDB.db");
             Statement smt=con.createStatement();
-            
             ResultSet resultset=smt.executeQuery("SELECT * From driver");
             while(resultset.next())
             {
@@ -45,10 +44,19 @@ public class DriverModel {
                         String Number=resultset.getString("Number");
                         driver.setMoblieNumber(Number);
                         String Id=resultset.getString("ID");
-                       driver.setMoblieNumber(Id);
+                       driver.setNationalID(Id);
                         String DL=resultset.getString("driver_license");
-                        driver.setMoblieNumber(DL);
+                        driver.setMoblieNumber(Number);
                         driver.setUserName(Name);
+                        driver.setDriverLicense(DL);
+                        if(state)
+                        {
+                            driver.setState(1);
+                        }
+                        else
+                        {
+                            driver.setState(0);
+                        }
                         
                         con.close();
                         
