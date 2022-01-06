@@ -33,8 +33,8 @@ public class DriverController {
  
      //done
     @RequestMapping(path="login",method = RequestMethod.GET)
-    public Driver login(String name,String password,String phoneNumber){
-        driver=new Driver(name, password, phoneNumber);
+    public Driver login(@RequestBody  Driver driver){
+        this.driver=driver;
        if( driverModel.validate(driver))
        {
            return driver;
@@ -48,21 +48,16 @@ public class DriverController {
         }
        //done
        @RequestMapping(path="Signup",method = RequestMethod.POST)
-    public Driver SignUp(String phoneNumber, String email, String password, String name, String NAID, String license) throws SQLException {
-        
-      driver=new Driver(phoneNumber, email, password, name, NAID, license);
-      if( driverModel.insert(driver))
-      {
-          return driver;
-      }
-      return null;
+    public boolean SignUp(@RequestBody  Driver driver) throws SQLException {
+        this.driver=driver;
+        return driverModel.insert(driver);
       
     }
 
    //done
    @RequestMapping(path="AddFavArea",method = RequestMethod.POST)
-    public void AddFavArea(String Area) {
-        driverModel.InsertFavArea(driver,Area);
+    public void AddFavArea(String area) {
+        driverModel.InsertFavArea(driver,area);
         
     }
     //done

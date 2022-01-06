@@ -30,9 +30,7 @@ import java.util.logging.Logger;
  */
 public class Client extends Person {
 
-    public Client(String UserName,String Password,String MoblieNumber) {
-        super(UserName, Password,MoblieNumber);
-    }
+
        public Client(String UserName,String Password,String MoblieNumber,String Email) {
         //Calling the super class Consturctor
         super( UserName,Password, MoblieNumber,Email);

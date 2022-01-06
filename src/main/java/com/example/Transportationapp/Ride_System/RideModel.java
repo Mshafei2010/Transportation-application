@@ -78,7 +78,7 @@ public class RideModel{
                  String Name=resultset.getString("Name");
                  String Number=resultset.getString("Number");
                  String email="";
-                 Driver d=new Driver(Name,Number,email);
+                 Driver d=new Driver(Number,email,"",Name,"","");
                  Drivers.add(d);            
             }
              con.close();
@@ -196,7 +196,8 @@ public class RideModel{
                 String pass=resultset.getString("CPassword");
                 String Number=resultset.getString("CNumber");
 
-                Client c=new Client(Uname, pass, Number);
+
+                Client c=new Client(Uname, pass, Number,"");
                 Ride r=new Ride(c.getUserName(), src, dest);
                 rides.add(r);
                 

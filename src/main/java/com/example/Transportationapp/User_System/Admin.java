@@ -19,9 +19,5 @@ public class Admin extends Person {
         super(UserName, Password,   MoblieNumber, Email);
        
     }
-    public Admin(String UserName,String Password,String MoblieNumber) {
-         //Calling the super class Consturctor
-        super( UserName, Password,MoblieNumber);
-    
-    }
+
 }

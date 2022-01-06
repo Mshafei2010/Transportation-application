@@ -14,16 +14,7 @@ public class Driver extends Person {
         this.NationalID = NationalID;
         this.DriverLicense = DriverLicense;
     }
-    public Driver(String UserName,String Password,String MoblieNumber,String NationalID,String DriverLicense) {
-         //Calling the super class Consturctor
-        super( UserName,Password,MoblieNumber);
-          this.NationalID = NationalID;
-        this.DriverLicense = DriverLicense;
-    }
-     public Driver(String UserName,String Password,String MoblieNumber) {
-         //Calling the super class Consturctor
-        super(UserName,Password,MoblieNumber);
-    }
+
 
     public void setDriverLicense(String DriverLicense) {
         this.DriverLicense = DriverLicense;

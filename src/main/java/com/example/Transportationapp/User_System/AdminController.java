@@ -7,6 +7,7 @@
 package com.example.Transportationapp.User_System;
 import com.example.Transportationapp.NotificationCenter.Notification;
 import com.example.Transportationapp.NotificationCenter.NotificationModel;
+import com.sun.source.tree.ReturnTree;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -25,8 +26,8 @@ public class AdminController {
         adminmodel =new AdminModel();
     }
     @RequestMapping(path = "login",method = RequestMethod.GET)
-     public Admin login(String UserName,String Password,String MoblieNumber) {
-        this.admin = new Admin(UserName,Password,MoblieNumber);
+     public Admin login(@RequestBody Admin admin) {
+        this.admin=admin;
         if(adminmodel.validate(admin)) {
             return admin;
         }
@@ -36,25 +37,26 @@ public class AdminController {
       public void logout() {
         System.exit(0);
     }
-    @RequestMapping(path = "login",method = RequestMethod.PUT)
-    public Admin Signup(String UserName,String Password,String MoblieNumber) throws SQLException {
-        admin=new Admin(UserName,Password,MoblieNumber);
+    @RequestMapping(path = "signup",method = RequestMethod.GET)
+    public Admin Signup(@RequestBody Admin admin) throws SQLException {
+        this.admin=admin;
         if(adminmodel.insert(admin)) {
             return admin;
         }
         return null;
     }
     @RequestMapping(path = "verifyDriver",method = RequestMethod.PUT)
-     public void verifyDriver(String name) throws ClassNotFoundException, SQLException
+     public String verifyDriver(String name) throws ClassNotFoundException, SQLException
      {  
          adminmodel.verifyDriverDatabase(name);
+         return "Driver is verified";
+
      }
     @RequestMapping(path = "GetNotifications",method = RequestMethod.GET)
       public ArrayList<Notification> Notifications() throws SQLException {
           ArrayList<Notification> notification=NotificationModel.RetriveNotification("Admin");
        return notification;
     }
-
 
 
     @RequestMapping(path = "GetpendingReg",method = RequestMethod.GET)

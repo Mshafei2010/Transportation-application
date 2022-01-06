@@ -127,10 +127,9 @@ public class DriverModel {
                     String Name=resultset.getString("Name");
                     String NationalID=resultset.getString("ID");
                     String DL=resultset.getString("driver_license");
-                     String phone=resultset.getString("Name");
                     String Number=resultset.getString("Number");
-                     String password=resultset.getString("Password");
-                    Driver d=new Driver(Name, password, Number, NationalID, DL);
+                     String Email=resultset.getString("Email");
+                    Driver d=new Driver(Number,Email,"",Name,NationalID,DL);
                     pendingdrivers.add(d);
                     
                 }
